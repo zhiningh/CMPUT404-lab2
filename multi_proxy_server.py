@@ -42,7 +42,7 @@ def main():
 		print("Starting proxy server")
 		proxy_start.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 		proxy_start.bind((HOST, PORT))
-		proxy_start.listen(1)
+		proxy_start.listen(3)
 
 		while True:
 			#connect proxy_start
@@ -55,18 +55,11 @@ def main():
 
 				#connect proxy_end
 				proxy_end.connect((remote_ip, extern_port))
-				
-				
-				
+							
 				p = Process(target=handle_request, args=(proxy_end, conn))
 				p.daemon = True
 				p.start()
 				print("Started process ", p)
-
-
-
-
-				
 
 			conn.close()
 

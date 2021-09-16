@@ -28,9 +28,9 @@ def connect(addr):
 
 def main():
 	address = [(HOST, PORT)]
-	#establish 10 different connections
+	#establish 3 different connections
 	with Pool() as p:
-		p.map(connect, address * 1)
+		p.map(connect, address * 3)
 
 
 if __name__ == "__main__":
